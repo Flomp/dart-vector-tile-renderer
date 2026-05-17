@@ -46,18 +46,36 @@ class InExpressionParser extends ExpressionComponentParser {
 
   @override
   bool matches(List<dynamic> json) {
-    return super.matches(json) && json.length >= 3 && json[1] is String;
+    if (!super.matches(json) || json.length < 3) return false;
+    if (json[1] is String) return true;
+    if (json[1] is List && json.length == 3 && _isLiteralArray(json[2])) {
+      return true;
+    }
+    return false;
   }
 
   @override
   Expression? parse(List<dynamic> json) {
-    final getExpression = parser.parseOptional(['get', json[1]]);
-    if (getExpression != null) {
-      final values = json.sublist(2);
-      return InExpression(getExpression, values);
+    if (json[1] is String) {
+      final getExpression = parser.parseOptional(['get', json[1]]);
+      if (getExpression != null) {
+        final values = json.sublist(2);
+        return InExpression(getExpression, values);
+      }
+      return null;
     }
-    return null;
+
+    final needle = parser.parseOptional(json[1]);
+    if (needle == null) return null;
+    final values = (json[2][1] as List<dynamic>);
+    return InExpression(needle, values);
   }
+
+  bool _isLiteralArray(dynamic json) =>
+      json is List &&
+      json.length == 2 &&
+      json[0] == 'literal' &&
+      json[1] is List;
 }
 
 class NotInExpressionParser extends ExpressionComponentParser {

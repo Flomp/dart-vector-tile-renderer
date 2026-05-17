@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:vector_tile_renderer/src/themes/expression/parser/format_expression_parser.dart';
+import 'package:vector_tile_renderer/src/themes/expression/parser/zoom_expression_parser.dart';
 
 import '../../../logger.dart';
 import '../caching_expression.dart';
@@ -69,6 +70,7 @@ class ExpressionParser {
     _register(LetExpressionParser(this, varParser));
     _register(IsSupportedScriptExpressionParser(this));
     _register(ImageExpressionParser(this));
+    _register(ZoomExpressionParser(this));
   }
 
   Set<String> supportedOperators() => _parserByOperator.keys.toSet();

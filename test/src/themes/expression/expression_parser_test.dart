@@ -87,6 +87,7 @@ void main() {
           'to-number',
           'to-string',
           'var',
+          'zoom'
         ]));
   });
 
