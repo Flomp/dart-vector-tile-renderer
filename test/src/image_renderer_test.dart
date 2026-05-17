@@ -31,8 +31,17 @@ void main() {
     await assertImageWith(tile, theme, 'openmaptiles', zoom: 18);
   });
 
-  test('renders a pmtile vector tile', () async {
+  test('renders a pmtile vector tile light theme', () async {
     final theme = ProvidedThemes.protomapsLight();
+    final tile = await readTestTile(theme, filename: 'sample_tile.mvt');
+    await assertImageWith(tile, theme, 'protomaps', zoom: 6);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 13);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 15);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 18);
+  });
+
+  test('renders a pmtile vector tile dark theme', () async {
+    final theme = ProvidedThemes.protomapsDark();
     final tile = await readTestTile(theme, filename: 'sample_tile.mvt');
     await assertImageWith(tile, theme, 'protomaps', zoom: 6);
     await assertImageWith(tile, theme, 'protomaps', zoom: 13);

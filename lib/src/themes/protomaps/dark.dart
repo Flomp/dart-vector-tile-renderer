@@ -1,4 +1,4 @@
-Map<String, dynamic> protomapsLightTheme() {
+Map<String, dynamic> protomapsDarkTheme() {
   return {
     "version": 8,
     "sources": {
@@ -13,7 +13,7 @@ Map<String, dynamic> protomapsLightTheme() {
       {
         "id": "background",
         "type": "background",
-        "paint": {"background-color": "#cccccc"}
+        "paint": {"background-color": "#34373d"}
       },
       {
         "id": "earth",
@@ -21,7 +21,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "filter": ["==", "\$type", "Polygon"],
         "source": "protomaps",
         "source-layer": "earth",
-        "paint": {"fill-color": "#e2dfda"}
+        "paint": {"fill-color": "#1f1f1f"}
       },
       {
         "id": "landcover",
@@ -33,18 +33,18 @@ Map<String, dynamic> protomapsLightTheme() {
             "match",
             ["get", "kind"],
             "grassland",
-            "rgba(210, 239, 207, 1)",
+            "rgba(30, 41, 31, 1)",
             "barren",
-            "rgba(255, 243, 215, 1)",
+            "rgba(38, 38, 36, 1)",
             "urban_area",
-            "rgba(230, 230, 230, 1)",
+            "rgba(28, 28, 28, 1)",
             "farmland",
-            "rgba(216, 239, 210, 1)",
+            "rgba(31, 36, 32, 1)",
             "glacier",
-            "rgba(255, 255, 255, 1)",
+            "rgba(43, 43, 43, 1)",
             "scrub",
-            "rgba(234, 239, 210, 1)",
-            "rgba(196, 231, 210, 1)"
+            "rgba(34, 36, 30, 1)",
+            "rgba(28, 41, 37, 1)"
           ],
           "fill-opacity": [
             "interpolate",
@@ -110,13 +110,13 @@ Map<String, dynamic> protomapsLightTheme() {
                 ]
               ]
             ],
-            "#9cd3b4",
+            "#192a24",
             [
               "==",
               ["get", "kind"],
               "wood"
             ],
-            "#a0d9a0",
+            "#202121",
             [
               "in",
               ["get", "kind"],
@@ -125,19 +125,19 @@ Map<String, dynamic> protomapsLightTheme() {
                 ["scrub", "grassland", "grass"]
               ]
             ],
-            "#99d2bb",
+            "#222323",
             [
               "==",
               ["get", "kind"],
               "glacier"
             ],
-            "#e7e7e7",
+            "#1c1c1c",
             [
               "==",
               ["get", "kind"],
               "sand"
             ],
-            "#e2e0d7",
+            "#212123",
             [
               "in",
               ["get", "kind"],
@@ -146,8 +146,8 @@ Map<String, dynamic> protomapsLightTheme() {
                 ["military", "naval_base", "airfield"]
               ]
             ],
-            "#c6dcdc",
-            "#e2dfda"
+            "#222323",
+            "#1f1f1f"
           ]
         }
       },
@@ -157,7 +157,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "allotments", "village_green", "playground"],
-        "paint": {"fill-color": "#9cd3b4", "fill-opacity": 0.7}
+        "paint": {"fill-color": "#192a24", "fill-opacity": 0.7}
       },
       {
         "id": "landuse_hospital",
@@ -165,7 +165,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "hospital"],
-        "paint": {"fill-color": "#e4dad9"}
+        "paint": {"fill-color": "#252424"}
       },
       {
         "id": "landuse_industrial",
@@ -173,7 +173,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "industrial"],
-        "paint": {"fill-color": "#d1dde1"}
+        "paint": {"fill-color": "#222222"}
       },
       {
         "id": "landuse_school",
@@ -181,7 +181,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "school", "university", "college"],
-        "paint": {"fill-color": "#e4ded7"}
+        "paint": {"fill-color": "#262323"}
       },
       {
         "id": "landuse_beach",
@@ -189,7 +189,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "beach"],
-        "paint": {"fill-color": "#e8e4d0"}
+        "paint": {"fill-color": "#28282a"}
       },
       {
         "id": "landuse_zoo",
@@ -197,7 +197,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "zoo"],
-        "paint": {"fill-color": "#c6dcdc"}
+        "paint": {"fill-color": "#222323"}
       },
       {
         "id": "landuse_aerodrome",
@@ -205,7 +205,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "aerodrome"],
-        "paint": {"fill-color": "#dadbdf"}
+        "paint": {"fill-color": "#1e1e1e"}
       },
       {
         "id": "roads_runway",
@@ -214,7 +214,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "roads",
         "filter": ["==", "kind_detail", "runway"],
         "paint": {
-          "line-color": "#e9e9ed",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -236,7 +236,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "minzoom": 13,
         "filter": ["==", "kind_detail", "taxiway"],
         "paint": {
-          "line-color": "#e9e9ed",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -259,7 +259,7 @@ Map<String, dynamic> protomapsLightTheme() {
           "any",
           ["in", "kind", "runway", "taxiway"]
         ],
-        "paint": {"fill-color": "#e9e9ed"}
+        "paint": {"fill-color": "#333333"}
       },
       {
         "id": "water",
@@ -267,7 +267,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "filter": ["==", "\$type", "Polygon"],
         "source": "protomaps",
         "source-layer": "water",
-        "paint": {"fill-color": "#80deea"}
+        "paint": {"fill-color": "#31353f"}
       },
       {
         "id": "water_stream",
@@ -276,7 +276,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "water",
         "minzoom": 14,
         "filter": ["in", "kind", "stream"],
-        "paint": {"line-color": "#80deea", "line-width": 0.5}
+        "paint": {"line-color": "#31353f", "line-width": 0.5}
       },
       {
         "id": "water_river",
@@ -286,7 +286,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "minzoom": 9,
         "filter": ["in", "kind", "river"],
         "paint": {
-          "line-color": "#80deea",
+          "line-color": "#31353f",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -306,7 +306,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "pedestrian", "dam"],
-        "paint": {"fill-color": "#e3e0d4"}
+        "paint": {"fill-color": "#1e1e1e"}
       },
       {
         "id": "landuse_pier",
@@ -314,7 +314,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "pier"],
-        "paint": {"fill-color": "#e0e0e0"}
+        "paint": {"fill-color": "#333333"}
       },
       {
         "id": "roads_tunnels_other_casing",
@@ -327,7 +327,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["in", "kind", "other", "path"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#141414",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -350,7 +350,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "minor_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#141414",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -387,7 +387,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#141414",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -423,7 +423,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#141414",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -460,7 +460,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#141414",
           "line-dasharray": [6, 0.5],
           "line-gap-width": [
             "interpolate",
@@ -497,7 +497,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["in", "kind", "other", "path"]
         ],
         "paint": {
-          "line-color": "#d5d5d5",
+          "line-color": "#292929",
           "line-dasharray": [4.5, 0.5],
           "line-width": [
             "interpolate",
@@ -521,7 +521,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "minor_road"]
         ],
         "paint": {
-          "line-color": "#d5d5d5",
+          "line-color": "#292929",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -548,7 +548,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["has", "is_link"]
         ],
         "paint": {
-          "line-color": "#d5d5d5",
+          "line-color": "#292929",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -573,7 +573,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#d5d5d5",
+          "line-color": "#292929",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -608,7 +608,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ]
         ],
         "paint": {
-          "line-color": "#d5d5d5",
+          "line-color": "#292929",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -632,7 +632,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source": "protomaps",
         "source-layer": "buildings",
         "filter": ["in", "kind", "building", "building_part"],
-        "paint": {"fill-color": "#cccccc", "fill-opacity": 0.5}
+        "paint": {"fill-color": "#111111", "fill-opacity": 0.5}
       },
       {
         "id": "roads_pier",
@@ -641,7 +641,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "roads",
         "filter": ["==", "kind_detail", "pier"],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -669,7 +669,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind_detail", "service"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -703,7 +703,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!=", "kind_detail", "service"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -736,7 +736,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "minzoom": 13,
         "filter": ["has", "is_link"],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -772,7 +772,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -811,7 +811,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -849,7 +849,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!=", "kind_detail", "pier"]
         ],
         "paint": {
-          "line-color": "#ebebeb",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -868,7 +868,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "roads",
         "filter": ["has", "is_link"],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#3d3d3d",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -895,7 +895,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind_detail", "service"]
         ],
         "paint": {
-          "line-color": "#ebebeb",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -925,9 +925,9 @@ Map<String, dynamic> protomapsLightTheme() {
             ["exponential", 1.6],
             ["zoom"],
             11,
-            "#ebebeb",
+            "#3d3d3d",
             16,
-            "#ffffff"
+            "#333333"
           ],
           "line-width": [
             "interpolate",
@@ -957,7 +957,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -992,7 +992,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#3d3d3d",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1022,7 +1022,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1058,7 +1058,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#474747",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1085,7 +1085,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "paint": {
           "line-dasharray": [0.3, 0.75],
           "line-opacity": 0.5,
-          "line-color": "#a7b1b3",
+          "line-color": "#000000",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1106,7 +1106,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "boundaries",
         "filter": ["<=", "kind_detail", 2],
         "paint": {
-          "line-color": "#adadad",
+          "line-color": "#5b6374",
           "line-width": 0.7,
           "line-dasharray": [
             "step",
@@ -1130,7 +1130,7 @@ Map<String, dynamic> protomapsLightTheme() {
         "source-layer": "boundaries",
         "filter": [">", "kind_detail", 2],
         "paint": {
-          "line-color": "#adadad",
+          "line-color": "#5b6374",
           "line-width": 0.4,
           "line-dasharray": [
             "step",
@@ -1159,7 +1159,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["in", "kind", "other", "path"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#2b2b2b",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1183,7 +1183,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1218,7 +1218,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "minor_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1255,7 +1255,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1290,7 +1290,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["in", "kind", "other", "path"]
         ],
         "paint": {
-          "line-color": "#ebebeb",
+          "line-color": "#333333",
           "line-dasharray": [2, 1],
           "line-width": [
             "interpolate",
@@ -1315,7 +1315,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "minor_road"]
         ],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1343,7 +1343,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["has", "is_link"]
         ],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#333333",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1369,7 +1369,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["==", "kind", "major_road"]
         ],
         "paint": {
-          "line-color": "#f5f5f5",
+          "line-color": "#3d3d3d",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1398,7 +1398,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#e0e0e0",
+          "line-color": "#1f1f1f",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1435,7 +1435,7 @@ Map<String, dynamic> protomapsLightTheme() {
           ["!has", "is_link"]
         ],
         "paint": {
-          "line-color": "#ffffff",
+          "line-color": "#474747",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1467,8 +1467,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-size": 12
         },
         "paint": {
-          "text-color": "#91888b",
-          "text-halo-color": "#ffffff",
+          "text-color": "#525252",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -2027,8 +2027,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-letter-spacing": 0.2
         },
         "paint": {
-          "text-color": "#728dd4",
-          "text-halo-color": "#80deea",
+          "text-color": "#717784",
+          "text-halo-color": "#31353f",
           "text-halo-width": 1
         }
       },
@@ -2605,8 +2605,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-size": 12
         },
         "paint": {
-          "text-color": "#91888b",
-          "text-halo-color": "#ffffff",
+          "text-color": "#525252",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -3173,9 +3173,9 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-transform": "uppercase"
         },
         "paint": {
-          "text-color": "#728dd4",
+          "text-color": "#717784",
           "text-halo-width": 1,
-          "text-halo-color": "#80deea"
+          "text-halo-color": "#31353f"
         }
       },
       {
@@ -3732,8 +3732,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-max-width": 8
         },
         "paint": {
-          "text-color": "#8f8f8f",
-          "text-halo-color": "#e0e0e0",
+          "text-color": "#525252",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -4301,8 +4301,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-max-width": 9
         },
         "paint": {
-          "text-color": "#728dd4",
-          "text-halo-color": "#80deea",
+          "text-color": "#717784",
+          "text-halo-color": "#31353f",
           "text-halo-width": 1
         }
       },
@@ -4373,7 +4373,7 @@ Map<String, dynamic> protomapsLightTheme() {
           "icon-rotation-alignment": "viewport",
           "text-rotation-alignment": "viewport"
         },
-        "paint": {"text-color": "#938a8d"}
+        "paint": {"text-color": "#666666"}
       },
       {
         "id": "roads_labels_major",
@@ -4930,8 +4930,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-size": 12
         },
         "paint": {
-          "text-color": "#938a8d",
-          "text-halo-color": "#ffffff",
+          "text-color": "#666666",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -5581,7 +5581,7 @@ Map<String, dynamic> protomapsLightTheme() {
                 ]
               ]
             ],
-            "#20834D",
+            "#30C573",
             [
               "in",
               ["get", "kind"],
@@ -5590,7 +5590,7 @@ Map<String, dynamic> protomapsLightTheme() {
                 ["aerodrome", "station", "bus_stop", "ferry_terminal"]
               ]
             ],
-            "#315BCF",
+            "#2B5CEA",
             [
               "in",
               ["get", "kind"],
@@ -5610,7 +5610,7 @@ Map<String, dynamic> protomapsLightTheme() {
                 ]
               ]
             ],
-            "#6A5B8F",
+            "#93939F",
             [
               "in",
               ["get", "kind"],
@@ -5626,7 +5626,7 @@ Map<String, dynamic> protomapsLightTheme() {
                 ]
               ]
             ],
-            "#1A8CBD",
+            "#4299BB",
             [
               "in",
               ["get", "kind"],
@@ -5635,7 +5635,7 @@ Map<String, dynamic> protomapsLightTheme() {
                 ["restaurant", "fast_food", "cafe", "bar"]
               ]
             ],
-            "#CB6704",
+            "#F19B6E",
             [
               "in",
               ["get", "kind"],
@@ -5645,9 +5645,9 @@ Map<String, dynamic> protomapsLightTheme() {
               ]
             ],
             "#EF56BA",
-            "#e2dfda"
+            "#1f1f1f"
           ],
-          "text-halo-color": "#e2dfda",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -6235,8 +6235,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-transform": "uppercase"
         },
         "paint": {
-          "text-color": "#8f8f8f",
-          "text-halo-color": "#e0e0e0",
+          "text-color": "#525252",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -6814,8 +6814,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-transform": "uppercase"
         },
         "paint": {
-          "text-color": "#b3b3b3",
-          "text-halo-color": "#e0e0e0",
+          "text-color": "#3d3d3d",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       },
@@ -7556,8 +7556,8 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-radial-offset": 0.3
         },
         "paint": {
-          "text-color": "#5c5c5c",
-          "text-halo-color": "#e0e0e0",
+          "text-color": "#7a7a7a",
+          "text-halo-color": "#212121",
           "text-halo-width": 1
         }
       },
@@ -7658,13 +7658,13 @@ Map<String, dynamic> protomapsLightTheme() {
           "text-transform": "uppercase"
         },
         "paint": {
-          "text-color": "#a3a3a3",
-          "text-halo-color": "#e2dfda",
+          "text-color": "#5c5c5c",
+          "text-halo-color": "#1f1f1f",
           "text-halo-width": 1
         }
       }
     ],
-    "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/light",
+    "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/dark",
     "glyphs":
         "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf"
   };

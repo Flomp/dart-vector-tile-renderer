@@ -1,3 +1,4 @@
+import 'package:vector_tile_renderer/src/themes/protomaps/dark.dart';
 import 'package:vector_tile_renderer/src/themes/protomaps/light.dart';
 
 import '../logger.dart';
@@ -13,4 +14,7 @@ class ProvidedThemes {
 
   static Theme protomapsLight({Logger? logger}) =>
       ThemeReader(logger: logger).read(protomapsLightTheme());
+
+  static Theme protomapsDark({Logger? logger}) =>
+      ThemeReader(logger: logger).read(protomapsDarkTheme());
 }
