@@ -1,3 +1,5 @@
+import 'package:vector_tile_renderer/src/themes/protomaps/light.dart';
+
 import '../logger.dart';
 import 'light_theme.dart';
 import 'theme.dart';
@@ -8,4 +10,7 @@ class ProvidedThemes {
 
   static Theme lightTheme({Logger? logger}) =>
       ThemeReader(logger: logger).read(lightThemeData());
+
+  static Theme protomapsLight({Logger? logger}) =>
+      ThemeReader(logger: logger).read(protomapsLightTheme());
 }

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:vector_tile_renderer/src/themes/expression/parser/format_expression_parser.dart';
+
 import '../../../logger.dart';
 import '../caching_expression.dart';
 import '../concat_expression.dart';
@@ -53,6 +55,7 @@ class ExpressionParser {
     _register(GeometryTypeExpressionParser(this));
     _register(CoalesceExpressionParser(this));
     _register(ConcatExpressionParser(this));
+    _register(FormatExpressionParser(this));
     _register(StringExpressionParser(this));
     _register(NaryMathExpressionParser(this, '*', (a, b) => a * b));
     _register(NaryMathExpressionParser(this, '/', (a, b) => a / b));
