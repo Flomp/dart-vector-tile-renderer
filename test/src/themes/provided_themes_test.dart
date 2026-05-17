@@ -11,6 +11,18 @@ void main() {
         <String>{'openmaptiles', 'natural_earth_shaded_relief'});
   });
   test('provides a protomaps light theme', () {
-    final theme = ProvidedThemes.protomapsLight(logger: const Logger.console());
+    final logger = WarningCapturingLogger();
+    ProvidedThemes.protomapsLight(logger: logger);
+    expect(logger.warnings, isEmpty);
   });
+}
+
+class WarningCapturingLogger implements Logger {
+  final List<String> warnings = [];
+
+  @override
+  void log(MessageFunction message) {}
+
+  @override
+  void warn(MessageFunction message) => warnings.add(message());
 }

@@ -6,13 +6,11 @@ import 'test_logger.dart';
 import 'test_tile.dart';
 
 void main() {
-  Future<void> assertImageWith(Tile tile, {required double zoom}) async {
-    final renderer = ImageRenderer(
-        theme: ProvidedThemes.lightTheme(logger: testLogger),
-        scale: 4,
-        logger: testLogger);
+  Future<void> assertImageWith(Tile tile, Theme theme, String provider,
+      {required double zoom}) async {
+    final renderer = ImageRenderer(theme: theme, scale: 4, logger: testLogger);
     final image = await renderer.render(
-        TileSource(tileset: Tileset({'openmaptiles': tile})),
+        TileSource(tileset: Tileset({provider: tile})),
         zoomScaleFactor: 4,
         zoom: zoom);
     final imageBytes = await image.toPng();
@@ -24,11 +22,21 @@ void main() {
   }
 
   test('renders a vector tile', () async {
+    final theme = ProvidedThemes.lightTheme();
     final tile =
         await readTestTile(ProvidedThemes.lightTheme(logger: testLogger));
-    await assertImageWith(tile, zoom: 6);
-    await assertImageWith(tile, zoom: 13);
-    await assertImageWith(tile, zoom: 15);
-    await assertImageWith(tile, zoom: 18);
+    await assertImageWith(tile, theme, 'openmaptiles', zoom: 6);
+    await assertImageWith(tile, theme, 'openmaptiles', zoom: 13);
+    await assertImageWith(tile, theme, 'openmaptiles', zoom: 15);
+    await assertImageWith(tile, theme, 'openmaptiles', zoom: 18);
+  });
+
+  test('renders a pmtile vector tile', () async {
+    final theme = ProvidedThemes.protomapsLight();
+    final tile = await readTestTile(theme, filename: 'sample_tile.mvt');
+    await assertImageWith(tile, theme, 'protomaps', zoom: 6);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 13);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 15);
+    await assertImageWith(tile, theme, 'protomaps', zoom: 18);
   });
 }

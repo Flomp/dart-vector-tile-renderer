@@ -28,9 +28,6 @@ class FormatExpressionParser extends ExpressionComponentParser {
       }
     }
 
-    if (parts.isEmpty) return LiteralExpression('');
-    if (parts.length == 1) return parts[0];
-
     return FormatExpression(parts);
   }
 }

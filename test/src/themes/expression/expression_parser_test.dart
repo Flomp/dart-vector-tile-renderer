@@ -70,6 +70,7 @@ void main() {
           'case',
           'coalesce',
           'concat',
+          'format',
           'geometry-type',
           'get',
           'has',
@@ -85,7 +86,7 @@ void main() {
           'to-boolean',
           'to-number',
           'to-string',
-          'var'
+          'var',
         ]));
   });
 
@@ -807,6 +808,95 @@ void main() {
     test('provides case expression that evaluates to another case', () {
       zoom = 4;
       assertExpression(expression, expectedCacheKey, 2);
+    });
+  });
+  group('format expression:', () {
+    test('concatenates two segments', () {
+      assertExpression(
+        [
+          "format",
+          ["get", "a-string"],
+          {},
+          ["get", "another-string"],
+          {}
+        ],
+        'format',
+        'a-string-valueanother-string-value',
+      );
+    });
+
+    test('skips newline segments', () {
+      assertExpression(
+        [
+          "format",
+          ["get", "a-string"],
+          {},
+          "\n",
+          {},
+          ["get", "another-string"],
+          {}
+        ],
+        'format',
+        'a-string-value another-string-value',
+      );
+    });
+
+    test('handles single segment', () {
+      assertExpression(
+        [
+          "format",
+          ["get", "a-string"],
+          {}
+        ],
+        'format',
+        'a-string-value',
+      );
+    });
+
+    test('returns null for all-null segments', () {
+      final expression = parser.parse(
+        [
+          "format",
+          ["get", "non-existent"],
+          {},
+          ["get", "also-non-existent"],
+          {}
+        ],
+      );
+      expect(expression.evaluate(context()), isNull);
+    });
+
+    test('ignores per-section text-font options', () {
+      assertExpression(
+        [
+          "format",
+          ["get", "a-string"],
+          {},
+          "\n",
+          {},
+          ["get", "another-string"],
+          {
+            "text-font": [
+              "case",
+              [
+                "==",
+                ["get", "a-string"],
+                "Devanagari"
+              ],
+              [
+                "literal",
+                ["Noto Sans Devanagari Regular v1"]
+              ],
+              [
+                "literal",
+                ["Noto Sans Regular"]
+              ]
+            ]
+          }
+        ],
+        'format',
+        'a-string-value another-string-value',
+      );
     });
   });
 }
