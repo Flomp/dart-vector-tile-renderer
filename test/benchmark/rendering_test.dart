@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:vector_tile_renderer/src/constants.dart';
-import 'package:vector_tile_renderer/src/themes/light_theme.dart';
+import 'package:vector_tile_renderer/src/themes/wanderer/wanderer_light_theme.dart';
 import 'package:vector_tile_renderer/vector_tile_renderer.dart';
 
 import '../src/test_tile.dart';
@@ -39,7 +39,7 @@ class RenderPicture extends BenchmarkBase {
             ')');
 
   static Future<void> setupAll() async {
-    testTile = await readTestTile(ThemeReader().read(lightThemeData()));
+    testTile = await readTestTile(ThemeReader().read(wandererLightTheme()));
   }
 
   static late final Tile testTile;
@@ -52,8 +52,8 @@ class RenderPicture extends BenchmarkBase {
 
   @override
   void setup() {
-    theme = ThemeReader().read(lightThemeData());
-    final tileset = Tileset({'openmaptiles': testTile});
+    theme = ThemeReader().read(wandererLightTheme());
+    final tileset = Tileset({'protomaps': testTile});
 
     this.tileset = preprocessTile
         ? TilesetPreprocessor(theme).preprocess(tileset, zoom: 1)

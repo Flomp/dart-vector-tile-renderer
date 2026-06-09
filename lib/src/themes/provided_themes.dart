@@ -1,20 +1,15 @@
-import 'package:vector_tile_renderer/src/themes/protomaps/dark.dart';
-import 'package:vector_tile_renderer/src/themes/protomaps/light.dart';
+import 'package:vector_tile_renderer/src/themes/wanderer/wanderer_light_theme.dart';
 
 import '../logger.dart';
-import 'light_theme.dart';
 import 'theme.dart';
 import 'theme_reader.dart';
 
 class ProvidedThemes {
   ProvidedThemes._();
 
-  static Theme lightTheme({Logger? logger}) =>
-      ThemeReader(logger: logger).read(lightThemeData());
+  static Theme wandererLight({Logger? logger}) =>
+      ThemeReader(logger: logger).read(wandererLightTheme());
 
-  static Theme protomapsLight({Logger? logger}) =>
-      ThemeReader(logger: logger).read(protomapsLightTheme());
-
-  static Theme protomapsDark({Logger? logger}) =>
-      ThemeReader(logger: logger).read(protomapsDarkTheme());
+  static Theme wandererDark({Logger? logger}) =>
+      ThemeReader(logger: logger).read(wandererLightTheme());
 }

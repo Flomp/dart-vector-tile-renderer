@@ -64,7 +64,7 @@ class MapTile extends StatefulWidget {
 }
 
 class _MapTileState extends State<MapTile> {
-  final theme = ProvidedThemes.lightTheme(logger: const Logger.console());
+  final theme = ProvidedThemes.wandererLight(logger: const Logger.console());
   bool _disposed = false;
   Tileset? _tileset;
   final List<Map<String, Uint8List>> _renderData = [];

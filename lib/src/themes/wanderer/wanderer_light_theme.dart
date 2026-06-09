@@ -1,19 +1,22 @@
-Map<String, dynamic> protomapsDarkTheme() {
+Map<String, dynamic> wandererLightTheme() {
   return {
     "version": 8,
     "sources": {
       "protomaps": {
-        "type": "vector",
         "attribution":
             "<a href=\"https://github.com/protomaps/basemaps\">Protomaps</a> © <a href=\"https://openstreetmap.org\">OpenStreetMap</a>",
-        "url": "pmtiles://https://demo-bucket.protomaps.com/v4.pmtiles"
-      }
+        "type": "vector",
+        "tiles": [
+          "https://api.protomaps.com/tiles/v4/{z}/{x}/{y}.mvt?key={key}",
+        ],
+        "maxzoom": 15,
+      },
     },
     "layers": [
       {
         "id": "background",
         "type": "background",
-        "paint": {"background-color": "#34373d"}
+        "paint": {"background-color": "#e8e4df"},
       },
       {
         "id": "earth",
@@ -21,7 +24,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": ["==", "\$type", "Polygon"],
         "source": "protomaps",
         "source-layer": "earth",
-        "paint": {"fill-color": "#1f1f1f"}
+        "paint": {"fill-color": "#f0ede8"},
       },
       {
         "id": "landcover",
@@ -33,18 +36,18 @@ Map<String, dynamic> protomapsDarkTheme() {
             "match",
             ["get", "kind"],
             "grassland",
-            "rgba(30, 41, 31, 1)",
+            "rgba(195, 235, 185, 1)",
             "barren",
-            "rgba(38, 38, 36, 1)",
+            "rgba(255, 243, 215, 1)",
             "urban_area",
-            "rgba(28, 28, 28, 1)",
+            "rgba(230, 230, 230, 1)",
             "farmland",
-            "rgba(31, 36, 32, 1)",
+            "rgba(200, 235, 195, 1)",
             "glacier",
-            "rgba(43, 43, 43, 1)",
+            "rgba(255, 255, 255, 1)",
             "scrub",
-            "rgba(34, 36, 30, 1)",
-            "rgba(28, 41, 37, 1)"
+            "rgba(215, 235, 195, 1)",
+            "rgba(185, 228, 200, 1)",
           ],
           "fill-opacity": [
             "interpolate",
@@ -53,9 +56,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             5,
             1,
             7,
-            0
-          ]
-        }
+            0,
+          ],
+        },
       },
       {
         "id": "landuse_park",
@@ -80,17 +83,17 @@ Map<String, dynamic> protomapsDarkTheme() {
           "sand",
           "military",
           "naval_base",
-          "airfield"
+          "airfield",
         ],
         "paint": {
           "fill-opacity": [
             "interpolate",
             ["linear"],
             ["zoom"],
-            6,
+            5,
             0,
             11,
-            1
+            1,
           ],
           "fill-color": [
             "case",
@@ -106,50 +109,50 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "protected_area",
                   "nature_reserve",
                   "forest",
-                  "golf_course"
-                ]
-              ]
+                  "golf_course",
+                ],
+              ],
             ],
-            "#192a24",
+            "#7ec8a0",
             [
               "==",
               ["get", "kind"],
-              "wood"
+              "wood",
             ],
-            "#202121",
+            "#84cc84",
             [
               "in",
               ["get", "kind"],
               [
                 "literal",
-                ["scrub", "grassland", "grass"]
-              ]
+                ["scrub", "grassland", "grass"],
+              ],
             ],
-            "#222323",
+            "#7dc4a8",
             [
               "==",
               ["get", "kind"],
-              "glacier"
+              "glacier",
             ],
-            "#1c1c1c",
+            "#e7e7e7",
             [
               "==",
               ["get", "kind"],
-              "sand"
+              "sand",
             ],
-            "#212123",
+            "#e2e0d7",
             [
               "in",
               ["get", "kind"],
               [
                 "literal",
-                ["military", "naval_base", "airfield"]
-              ]
+                ["military", "naval_base", "airfield"],
+              ],
             ],
-            "#222323",
-            "#1f1f1f"
-          ]
-        }
+            "#b8d4d4",
+            "#e2dfda",
+          ],
+        },
       },
       {
         "id": "landuse_urban_green",
@@ -157,7 +160,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "allotments", "village_green", "playground"],
-        "paint": {"fill-color": "#192a24", "fill-opacity": 0.7}
+        "paint": {"fill-color": "#7ec8a0", "fill-opacity": 0.7},
       },
       {
         "id": "landuse_hospital",
@@ -165,7 +168,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "hospital"],
-        "paint": {"fill-color": "#252424"}
+        "paint": {"fill-color": "#e4dad9"},
       },
       {
         "id": "landuse_industrial",
@@ -173,7 +176,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "industrial"],
-        "paint": {"fill-color": "#222222"}
+        "paint": {"fill-color": "#d1dde1"},
       },
       {
         "id": "landuse_school",
@@ -181,7 +184,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "school", "university", "college"],
-        "paint": {"fill-color": "#262323"}
+        "paint": {"fill-color": "#e4ded7"},
       },
       {
         "id": "landuse_beach",
@@ -189,7 +192,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "beach"],
-        "paint": {"fill-color": "#28282a"}
+        "paint": {"fill-color": "#e8e4d0"},
       },
       {
         "id": "landuse_zoo",
@@ -197,7 +200,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "zoo"],
-        "paint": {"fill-color": "#222323"}
+        "paint": {"fill-color": "#c6dcdc"},
       },
       {
         "id": "landuse_aerodrome",
@@ -205,7 +208,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "aerodrome"],
-        "paint": {"fill-color": "#1e1e1e"}
+        "paint": {"fill-color": "#dadbdf"},
       },
       {
         "id": "roads_runway",
@@ -214,7 +217,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "roads",
         "filter": ["==", "kind_detail", "runway"],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#e9e9ed",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -224,9 +227,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             4,
             18,
-            30
-          ]
-        }
+            30,
+          ],
+        },
       },
       {
         "id": "roads_taxiway",
@@ -236,7 +239,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "minzoom": 13,
         "filter": ["==", "kind_detail", "taxiway"],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#e9e9ed",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -246,9 +249,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             15,
-            6
-          ]
-        }
+            6,
+          ],
+        },
       },
       {
         "id": "landuse_runway",
@@ -257,9 +260,9 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "landuse",
         "filter": [
           "any",
-          ["in", "kind", "runway", "taxiway"]
+          ["in", "kind", "runway", "taxiway"],
         ],
-        "paint": {"fill-color": "#333333"}
+        "paint": {"fill-color": "#e9e9ed"},
       },
       {
         "id": "water",
@@ -267,7 +270,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": ["==", "\$type", "Polygon"],
         "source": "protomaps",
         "source-layer": "water",
-        "paint": {"fill-color": "#31353f"}
+        "paint": {"fill-color": "#6ab8d4"},
       },
       {
         "id": "water_stream",
@@ -276,7 +279,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "water",
         "minzoom": 14,
         "filter": ["in", "kind", "stream"],
-        "paint": {"line-color": "#31353f", "line-width": 0.5}
+        "paint": {"line-color": "#6ab8d4", "line-width": 0.5},
       },
       {
         "id": "water_river",
@@ -286,7 +289,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "minzoom": 9,
         "filter": ["in", "kind", "river"],
         "paint": {
-          "line-color": "#31353f",
+          "line-color": "#6ab8d4",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -296,9 +299,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             9.5,
             1,
             18,
-            12
-          ]
-        }
+            12,
+          ],
+        },
       },
       {
         "id": "landuse_pedestrian",
@@ -306,7 +309,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["in", "kind", "pedestrian", "dam"],
-        "paint": {"fill-color": "#1e1e1e"}
+        "paint": {"fill-color": "#e3e0d4"},
       },
       {
         "id": "landuse_pier",
@@ -314,7 +317,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "landuse",
         "filter": ["==", "kind", "pier"],
-        "paint": {"fill-color": "#333333"}
+        "paint": {"fill-color": "#e0e0e0"},
       },
       {
         "id": "roads_tunnels_other_casing",
@@ -324,10 +327,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["in", "kind", "other", "path"]
+          ["in", "kind", "other", "path"],
         ],
         "paint": {
-          "line-color": "#141414",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -335,9 +338,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             14,
             0,
             20,
-            7
-          ]
-        }
+            7,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_minor_casing",
@@ -347,10 +350,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["==", "kind", "minor_road"]
+          ["==", "kind", "minor_road"],
         ],
         "paint": {
-          "line-color": "#141414",
+          "line-color": "#dedad4",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -363,7 +366,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -372,9 +375,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             0,
             12.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_link_casing",
@@ -384,10 +387,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["has", "is_link"]
+          ["has", "is_link"],
         ],
         "paint": {
-          "line-color": "#141414",
+          "line-color": "#dedad4",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -398,7 +401,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -407,9 +410,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             0,
             12.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_major_casing",
@@ -420,10 +423,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["has", "is_tunnel"],
           ["!has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#141414",
+          "line-color": "#e0e0e0",
           "line-dasharray": [3, 2],
           "line-gap-width": [
             "interpolate",
@@ -434,7 +437,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             0.5,
             18,
-            13
+            13,
           ],
           "line-width": [
             "interpolate",
@@ -443,9 +446,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             9,
             0,
             9.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_highway_casing",
@@ -457,10 +460,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#141414",
+          "line-color": "#e0e0e0",
           "line-dasharray": [6, 0.5],
           "line-gap-width": [
             "interpolate",
@@ -471,7 +474,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             3.5,
             0.5,
             18,
-            15
+            15,
           ],
           "line-width": [
             "interpolate",
@@ -482,9 +485,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             1,
             20,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_other",
@@ -494,10 +497,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["in", "kind", "other", "path"]
+          ["in", "kind", "other", "path"],
         ],
         "paint": {
-          "line-color": "#292929",
+          "line-color": "#d5d5d5",
           "line-dasharray": [4.5, 0.5],
           "line-width": [
             "interpolate",
@@ -506,9 +509,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             14,
             0,
             20,
-            7
-          ]
-        }
+            7,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_minor",
@@ -518,10 +521,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["==", "kind", "minor_road"]
+          ["==", "kind", "minor_road"],
         ],
         "paint": {
-          "line-color": "#292929",
+          "line-color": "#d5d5d5",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -533,9 +536,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_link",
@@ -545,10 +548,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["has", "is_link"]
+          ["has", "is_link"],
         ],
         "paint": {
-          "line-color": "#292929",
+          "line-color": "#d5d5d5",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -558,9 +561,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_major",
@@ -570,10 +573,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_tunnel"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#292929",
+          "line-color": "#d5d5d5",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -585,9 +588,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             3,
             18,
-            13
-          ]
-        }
+            13,
+          ],
+        },
       },
       {
         "id": "roads_tunnels_highway",
@@ -600,15 +603,15 @@ Map<String, dynamic> protomapsDarkTheme() {
           [
             "==",
             ["get", "kind"],
-            "highway"
+            "highway",
           ],
           [
             "!",
-            ["has", "is_link"]
-          ]
+            ["has", "is_link"],
+          ],
         ],
         "paint": {
-          "line-color": "#292929",
+          "line-color": "#d5d5d5",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -622,9 +625,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             5,
             18,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "buildings",
@@ -632,7 +635,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source": "protomaps",
         "source-layer": "buildings",
         "filter": ["in", "kind", "building", "building_part"],
-        "paint": {"fill-color": "#111111", "fill-opacity": 0.5}
+        "paint": {"fill-color": "#dbd8d0", "fill-opacity": 0.45},
       },
       {
         "id": "roads_pier",
@@ -641,7 +644,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "roads",
         "filter": ["==", "kind_detail", "pier"],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#e0e0e0",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -651,9 +654,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12.5,
             0.5,
             20,
-            16
-          ]
-        }
+            16,
+          ],
+        },
       },
       {
         "id": "roads_minor_service_casing",
@@ -666,10 +669,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "minor_road"],
-          ["==", "kind_detail", "service"]
+          ["==", "kind_detail", "service"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -677,7 +680,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             13,
             0,
             18,
-            8
+            8,
           ],
           "line-width": [
             "interpolate",
@@ -686,9 +689,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13,
             0,
             13.5,
-            0.8
-          ]
-        }
+            0.8,
+          ],
+        },
       },
       {
         "id": "roads_minor_casing",
@@ -700,10 +703,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "minor_road"],
-          ["!=", "kind_detail", "service"]
+          ["!=", "kind_detail", "service"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -715,7 +718,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -724,9 +727,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             0,
             12.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_link_casing",
@@ -736,7 +739,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "minzoom": 13,
         "filter": ["has", "is_link"],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -746,7 +749,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -755,9 +758,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13,
             0,
             13.5,
-            1.5
-          ]
-        }
+            1.5,
+          ],
+        },
       },
       {
         "id": "roads_major_casing_late",
@@ -769,10 +772,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -784,7 +787,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             3,
             18,
-            13
+            13,
           ],
           "line-width": [
             "interpolate",
@@ -793,9 +796,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             9,
             0,
             9.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_highway_casing_late",
@@ -808,10 +811,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -821,7 +824,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             3.5,
             0.5,
             18,
-            15
+            15,
           ],
           "line-width": [
             "interpolate",
@@ -832,9 +835,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             1,
             20,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "roads_other",
@@ -846,20 +849,23 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["in", "kind", "other", "path"],
-          ["!=", "kind_detail", "pier"]
+          ["!=", "kind_detail", "pier"],
         ],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#b35c1e",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
             ["zoom"],
+            12,
+            0.4,
             14,
-            0.5,
+            1.2,
             20,
-            12
-          ]
-        }
+            7,
+          ],
+          "line-dasharray": [3, 2],
+        },
       },
       {
         "id": "roads_link",
@@ -868,7 +874,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "roads",
         "filter": ["has", "is_link"],
         "paint": {
-          "line-color": "#3d3d3d",
+          "line-color": "#ffffff",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -878,9 +884,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_minor_service",
@@ -892,10 +898,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "minor_road"],
-          ["==", "kind_detail", "service"]
+          ["==", "kind_detail", "service"],
         ],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#f5f2ee",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -903,9 +909,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13,
             0,
             18,
-            8
-          ]
-        }
+            8,
+          ],
+        },
       },
       {
         "id": "roads_minor",
@@ -917,18 +923,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "minor_road"],
-          ["!=", "kind_detail", "service"]
+          ["!=", "kind_detail", "service"],
         ],
         "paint": {
-          "line-color": [
-            "interpolate",
-            ["exponential", 1.6],
-            ["zoom"],
-            11,
-            "#3d3d3d",
-            16,
-            "#333333"
-          ],
+          "line-color": "#f5f2ee",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -940,9 +938,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_major_casing_early",
@@ -954,10 +952,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -967,7 +965,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             0.5,
             18,
-            13
+            13,
           ],
           "line-width": [
             "interpolate",
@@ -976,9 +974,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             9,
             0,
             9.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_major",
@@ -989,10 +987,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#3d3d3d",
+          "line-color": "#f0ece4",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1004,9 +1002,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             3,
             18,
-            13
-          ]
-        }
+            13,
+          ],
+        },
       },
       {
         "id": "roads_highway_casing_early",
@@ -1019,10 +1017,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1032,7 +1030,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             3.5,
             0.5,
             18,
-            15
+            15,
           ],
           "line-width": [
             "interpolate",
@@ -1041,9 +1039,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             7,
             0,
             7.5,
-            1
-          ]
-        }
+            1,
+          ],
+        },
       },
       {
         "id": "roads_highway",
@@ -1055,10 +1053,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           ["!has", "is_tunnel"],
           ["!has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#474747",
+          "line-color": "#f8d882",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1072,9 +1070,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             5,
             18,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "roads_rail",
@@ -1085,7 +1083,7 @@ Map<String, dynamic> protomapsDarkTheme() {
         "paint": {
           "line-dasharray": [0.3, 0.75],
           "line-opacity": 0.5,
-          "line-color": "#000000",
+          "line-color": "#a7b1b3",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1095,9 +1093,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             6,
             0.15,
             18,
-            9
-          ]
-        }
+            9,
+          ],
+        },
       },
       {
         "id": "boundaries_country",
@@ -1106,22 +1104,22 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "boundaries",
         "filter": ["<=", "kind_detail", 2],
         "paint": {
-          "line-color": "#5b6374",
+          "line-color": "#b0a090",
           "line-width": 0.7,
           "line-dasharray": [
             "step",
             ["zoom"],
             [
               "literal",
-              [2, 0]
+              [2, 0],
             ],
             4,
             [
               "literal",
-              [2, 1]
-            ]
-          ]
-        }
+              [2, 1],
+            ],
+          ],
+        },
       },
       {
         "id": "boundaries",
@@ -1130,22 +1128,22 @@ Map<String, dynamic> protomapsDarkTheme() {
         "source-layer": "boundaries",
         "filter": [">", "kind_detail", 2],
         "paint": {
-          "line-color": "#5b6374",
+          "line-color": "#c8bfb0",
           "line-width": 0.4,
           "line-dasharray": [
             "step",
             ["zoom"],
             [
               "literal",
-              [2, 0]
+              [2, 0],
             ],
             4,
             [
               "literal",
-              [2, 1]
-            ]
-          ]
-        }
+              [2, 1],
+            ],
+          ],
+        },
       },
       {
         "id": "roads_bridges_other_casing",
@@ -1156,10 +1154,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["in", "kind", "other", "path"]
+          ["in", "kind", "other", "path"],
         ],
         "paint": {
-          "line-color": "#2b2b2b",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1167,9 +1165,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             14,
             0,
             20,
-            7
-          ]
-        }
+            7,
+          ],
+        },
       },
       {
         "id": "roads_bridges_link_casing",
@@ -1180,10 +1178,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["has", "is_link"]
+          ["has", "is_link"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1193,7 +1191,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -1202,9 +1200,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             0,
             12.5,
-            1.5
-          ]
-        }
+            1.5,
+          ],
+        },
       },
       {
         "id": "roads_bridges_minor_casing",
@@ -1215,10 +1213,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["==", "kind", "minor_road"]
+          ["==", "kind", "minor_road"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1230,7 +1228,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
+            11,
           ],
           "line-width": [
             "interpolate",
@@ -1239,9 +1237,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13,
             0,
             13.5,
-            0.8
-          ]
-        }
+            0.8,
+          ],
+        },
       },
       {
         "id": "roads_bridges_major_casing",
@@ -1252,10 +1250,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1265,7 +1263,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             0.5,
             18,
-            10
+            10,
           ],
           "line-width": [
             "interpolate",
@@ -1274,9 +1272,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             9,
             0,
             9.5,
-            1.5
-          ]
-        }
+            1.5,
+          ],
+        },
       },
       {
         "id": "roads_bridges_other",
@@ -1287,10 +1285,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["in", "kind", "other", "path"]
+          ["in", "kind", "other", "path"],
         ],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#ebebeb",
           "line-dasharray": [2, 1],
           "line-width": [
             "interpolate",
@@ -1299,9 +1297,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             14,
             0,
             20,
-            7
-          ]
-        }
+            7,
+          ],
+        },
       },
       {
         "id": "roads_bridges_minor",
@@ -1312,10 +1310,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["==", "kind", "minor_road"]
+          ["==", "kind", "minor_road"],
         ],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#ffffff",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1327,9 +1325,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             2,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_bridges_link",
@@ -1340,10 +1338,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["has", "is_link"]
+          ["has", "is_link"],
         ],
         "paint": {
-          "line-color": "#333333",
+          "line-color": "#ffffff",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1353,9 +1351,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             13.5,
             1,
             18,
-            11
-          ]
-        }
+            11,
+          ],
+        },
       },
       {
         "id": "roads_bridges_major",
@@ -1366,10 +1364,10 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "all",
           ["has", "is_bridge"],
-          ["==", "kind", "major_road"]
+          ["==", "kind", "major_road"],
         ],
         "paint": {
-          "line-color": "#3d3d3d",
+          "line-color": "#f5f5f5",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1381,9 +1379,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             3,
             18,
-            13
-          ]
-        }
+            13,
+          ],
+        },
       },
       {
         "id": "roads_bridges_highway_casing",
@@ -1395,10 +1393,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#1f1f1f",
+          "line-color": "#dedad4",
           "line-gap-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1408,7 +1406,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             3.5,
             0.5,
             18,
-            15
+            15,
           ],
           "line-width": [
             "interpolate",
@@ -1419,9 +1417,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             7.5,
             1,
             20,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "roads_bridges_highway",
@@ -1432,10 +1430,10 @@ Map<String, dynamic> protomapsDarkTheme() {
           "all",
           ["has", "is_bridge"],
           ["==", "kind", "highway"],
-          ["!has", "is_link"]
+          ["!has", "is_link"],
         ],
         "paint": {
-          "line-color": "#474747",
+          "line-color": "#ffffff",
           "line-width": [
             "interpolate",
             ["exponential", 1.6],
@@ -1449,9 +1447,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             15,
             5,
             18,
-            15
-          ]
-        }
+            15,
+          ],
+        },
       },
       {
         "id": "address_label",
@@ -1464,13 +1462,13 @@ Map<String, dynamic> protomapsDarkTheme() {
           "symbol-placement": "point",
           "text-font": ["Noto Sans Italic"],
           "text-field": ["get", "addr_housenumber"],
-          "text-size": 12
+          "text-size": 12,
         },
         "paint": {
-          "text-color": "#525252",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#242734",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "water_waterway_label",
@@ -1489,24 +1487,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -1517,16 +1515,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -1537,20 +1535,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -1558,20 +1556,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -1579,38 +1577,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -1621,7 +1619,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -1629,24 +1627,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -1654,18 +1652,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -1676,7 +1674,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -1684,7 +1682,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -1692,18 +1690,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -1711,7 +1709,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -1719,7 +1717,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -1727,20 +1725,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -1748,7 +1746,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -1759,7 +1757,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -1767,24 +1765,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -1792,24 +1790,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -1817,24 +1815,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -1842,7 +1840,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -1850,7 +1848,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -1858,24 +1856,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -1883,22 +1881,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -1906,7 +1904,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -1914,7 +1912,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -1922,24 +1920,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -1947,18 +1945,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -1966,7 +1964,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -1974,7 +1972,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -1982,24 +1980,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2007,30 +2005,30 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-size": 12,
-          "text-letter-spacing": 0.2
+          "text-letter-spacing": 0.2,
         },
         "paint": {
-          "text-color": "#717784",
-          "text-halo-color": "#31353f",
-          "text-halo-width": 1
-        }
+          "text-color": "#2a6e8a",
+          "text-halo-color": "rgba(255,255,255,0.85)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "roads_oneway",
@@ -2041,14 +2039,14 @@ Map<String, dynamic> protomapsDarkTheme() {
         "filter": [
           "==",
           ["get", "oneway"],
-          "yes"
+          "yes",
         ],
         "layout": {
           "symbol-placement": "line",
           "icon-image": "arrow",
           "icon-rotate": 90,
-          "symbol-spacing": 100
-        }
+          "symbol-spacing": 100,
+        },
       },
       {
         "id": "roads_labels_minor",
@@ -2068,24 +2066,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -2096,16 +2094,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -2116,20 +2114,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -2137,20 +2135,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -2158,38 +2156,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -2200,7 +2198,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -2208,24 +2206,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -2233,18 +2231,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -2255,7 +2253,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -2263,7 +2261,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2271,18 +2269,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -2290,7 +2288,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -2298,7 +2296,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -2306,20 +2304,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -2327,7 +2325,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -2338,7 +2336,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -2346,24 +2344,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -2371,24 +2369,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -2396,24 +2394,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -2421,7 +2419,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -2429,7 +2427,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2437,24 +2435,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -2462,22 +2460,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -2485,7 +2483,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -2493,7 +2491,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -2501,24 +2499,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -2526,18 +2524,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -2545,7 +2543,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -2553,7 +2551,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -2561,24 +2559,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2586,29 +2584,29 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
-          "text-size": 12
+          "text-size": 12,
         },
         "paint": {
-          "text-color": "#525252",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#242734",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "water_label_ocean",
@@ -2625,24 +2623,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -2653,16 +2651,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -2673,20 +2671,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -2694,20 +2692,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -2715,38 +2713,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -2757,7 +2755,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -2765,24 +2763,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -2790,18 +2788,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -2812,7 +2810,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -2820,7 +2818,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2828,18 +2826,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -2847,7 +2845,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -2855,7 +2853,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -2863,20 +2861,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -2884,7 +2882,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -2895,7 +2893,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -2903,24 +2901,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -2928,24 +2926,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -2953,24 +2951,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -2978,7 +2976,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -2986,7 +2984,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -2994,24 +2992,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -3019,22 +3017,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -3042,7 +3040,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -3050,7 +3048,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3058,24 +3056,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -3083,18 +3081,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -3102,7 +3100,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -3110,7 +3108,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3118,24 +3116,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -3143,21 +3141,21 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-size": [
             "interpolate",
@@ -3166,17 +3164,17 @@ Map<String, dynamic> protomapsDarkTheme() {
             3,
             10,
             10,
-            12
+            12,
           ],
           "text-letter-spacing": 0.1,
           "text-max-width": 9,
-          "text-transform": "uppercase"
+          "text-transform": "uppercase",
         },
         "paint": {
-          "text-color": "#717784",
+          "text-color": "#2a6e8a",
           "text-halo-width": 1,
-          "text-halo-color": "#31353f"
-        }
+          "text-halo-color": "rgba(255,255,255,0.85)",
+        },
       },
       {
         "id": "earth_label_islands",
@@ -3193,24 +3191,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -3221,16 +3219,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -3241,20 +3239,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -3262,20 +3260,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -3283,38 +3281,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -3325,7 +3323,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -3333,24 +3331,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -3358,18 +3356,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -3380,7 +3378,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -3388,7 +3386,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -3396,18 +3394,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -3415,7 +3413,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -3423,7 +3421,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3431,20 +3429,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -3452,7 +3450,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -3463,7 +3461,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -3471,24 +3469,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -3496,24 +3494,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -3521,24 +3519,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -3546,7 +3544,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -3554,7 +3552,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -3562,24 +3560,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -3587,22 +3585,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -3610,7 +3608,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -3618,7 +3616,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3626,24 +3624,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -3651,18 +3649,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -3670,7 +3668,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -3678,7 +3676,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3686,24 +3684,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -3711,31 +3709,31 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-size": 10,
           "text-letter-spacing": 0.1,
-          "text-max-width": 8
+          "text-max-width": 8,
         },
         "paint": {
-          "text-color": "#525252",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#2a6e8a",
+          "text-halo-color": "rgba(255,255,255,0.85)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "water_label_lakes",
@@ -3752,24 +3750,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -3780,16 +3778,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -3800,20 +3798,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -3821,20 +3819,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -3842,38 +3840,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -3884,7 +3882,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -3892,24 +3890,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -3917,18 +3915,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -3939,7 +3937,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -3947,7 +3945,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -3955,18 +3953,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -3974,7 +3972,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -3982,7 +3980,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -3990,20 +3988,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -4011,7 +4009,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -4022,7 +4020,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -4030,24 +4028,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -4055,24 +4053,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -4080,24 +4078,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -4105,7 +4103,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -4113,7 +4111,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -4121,24 +4119,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -4146,22 +4144,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -4169,7 +4167,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -4177,7 +4175,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -4185,24 +4183,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -4210,18 +4208,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -4229,7 +4227,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -4237,7 +4235,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -4245,24 +4243,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -4270,21 +4268,21 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-size": [
             "interpolate",
@@ -4295,16 +4293,16 @@ Map<String, dynamic> protomapsDarkTheme() {
             6,
             12,
             10,
-            12
+            12,
           ],
           "text-letter-spacing": 0.1,
-          "text-max-width": 9
+          "text-max-width": 9,
         },
         "paint": {
-          "text-color": "#717784",
-          "text-halo-color": "#31353f",
-          "text-halo-width": 1
-        }
+          "text-color": "#2a6e8a",
+          "text-halo-color": "rgba(255,255,255,0.85)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "roads_shields",
@@ -4318,18 +4316,18 @@ Map<String, dynamic> protomapsDarkTheme() {
             ["get", "kind"],
             [
               "literal",
-              ["highway", "major_road"]
-            ]
+              ["highway", "major_road"],
+            ],
           ],
           ["has", "shield_text"],
           [
             "<=",
             [
               "length",
-              ["get", "shield_text"]
+              ["get", "shield_text"],
             ],
-            5
-          ]
+            5,
+          ],
         ],
         "layout": {
           "icon-image": [
@@ -4341,9 +4339,9 @@ Map<String, dynamic> protomapsDarkTheme() {
               "US:I-",
               [
                 "length",
-                ["get", "shield_text"]
+                ["get", "shield_text"],
               ],
-              "char"
+              "char",
             ],
             "NL:S-road",
             [
@@ -4351,19 +4349,19 @@ Map<String, dynamic> protomapsDarkTheme() {
               "NL:S-road-",
               [
                 "length",
-                ["get", "shield_text"]
+                ["get", "shield_text"],
               ],
-              "char"
+              "char",
             ],
             [
               "concat",
               "generic_shield-",
               [
                 "length",
-                ["get", "shield_text"]
+                ["get", "shield_text"],
               ],
-              "char"
-            ]
+              "char",
+            ],
           ],
           "text-field": ["get", "shield_text"],
           "text-font": ["Noto Sans Medium"],
@@ -4371,9 +4369,9 @@ Map<String, dynamic> protomapsDarkTheme() {
           "icon-size": 0.8,
           "symbol-placement": "line",
           "icon-rotation-alignment": "viewport",
-          "text-rotation-alignment": "viewport"
+          "text-rotation-alignment": "viewport",
         },
-        "paint": {"text-color": "#666666"}
+        "paint": {"text-color": "#242734"},
       },
       {
         "id": "roads_labels_major",
@@ -4393,24 +4391,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -4421,16 +4419,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -4441,20 +4439,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -4462,20 +4460,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -4483,38 +4481,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -4525,7 +4523,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -4533,24 +4531,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -4558,18 +4556,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -4580,7 +4578,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -4588,7 +4586,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -4596,18 +4594,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -4615,7 +4613,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -4623,7 +4621,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -4631,20 +4629,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -4652,7 +4650,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -4663,7 +4661,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -4671,24 +4669,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -4696,24 +4694,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -4721,24 +4719,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -4746,7 +4744,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -4754,7 +4752,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -4762,24 +4760,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -4787,22 +4785,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -4810,7 +4808,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -4818,7 +4816,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -4826,24 +4824,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -4851,18 +4849,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -4870,7 +4868,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -4878,7 +4876,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -4886,24 +4884,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -4911,29 +4909,29 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
-          "text-size": 12
+          "text-size": 12,
         },
         "paint": {
-          "text-color": "#666666",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#242734",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "pois",
@@ -4983,9 +4981,9 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "attraction",
                 "museum",
                 "theatre",
-                "artwork"
-              ]
-            ]
+                "artwork",
+              ],
+            ],
           ],
           [
             ">=",
@@ -4993,9 +4991,9 @@ Map<String, dynamic> protomapsDarkTheme() {
             [
               "+",
               ["get", "min_zoom"],
-              0
-            ]
-          ]
+              0,
+            ],
+          ],
         ],
         "layout": {
           "icon-image": [
@@ -5003,7 +5001,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             ["get", "kind"],
             "station",
             "train_station",
-            ["get", "kind"]
+            ["get", "kind"],
           ],
           "text-font": ["Noto Sans Regular"],
           "text-justify": "auto",
@@ -5014,24 +5012,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -5042,16 +5040,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -5062,20 +5060,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -5083,20 +5081,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -5104,38 +5102,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -5146,7 +5144,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -5154,24 +5152,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -5179,18 +5177,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -5201,7 +5199,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -5209,7 +5207,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -5217,18 +5215,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -5236,7 +5234,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -5244,7 +5242,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -5252,20 +5250,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -5273,7 +5271,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -5284,7 +5282,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -5292,24 +5290,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -5317,24 +5315,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -5342,24 +5340,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -5367,7 +5365,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -5375,7 +5373,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -5383,24 +5381,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -5408,22 +5406,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -5431,7 +5429,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -5439,7 +5437,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -5447,24 +5445,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -5472,18 +5470,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -5491,7 +5489,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -5499,7 +5497,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -5507,24 +5505,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -5532,21 +5530,21 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-size": [
             "interpolate",
@@ -5555,101 +5553,17 @@ Map<String, dynamic> protomapsDarkTheme() {
             17,
             10,
             19,
-            16
+            16,
           ],
           "text-max-width": 8,
           "text-offset": [1.1, 0],
-          "text-variable-anchor": ["left", "right"]
+          "text-variable-anchor": ["left", "right"],
         },
         "paint": {
-          "text-color": [
-            "case",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                [
-                  "beach",
-                  "forest",
-                  "marina",
-                  "park",
-                  "peak",
-                  "zoo",
-                  "garden",
-                  "bench"
-                ]
-              ]
-            ],
-            "#30C573",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                ["aerodrome", "station", "bus_stop", "ferry_terminal"]
-              ]
-            ],
-            "#2B5CEA",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                [
-                  "stadium",
-                  "university",
-                  "library",
-                  "school",
-                  "animal",
-                  "toilets",
-                  "drinking_water",
-                  "post_office",
-                  "building",
-                  "townhall"
-                ]
-              ]
-            ],
-            "#93939F",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                [
-                  "supermarket",
-                  "convenience",
-                  "books",
-                  "beauty",
-                  "electronics",
-                  "clothes"
-                ]
-              ]
-            ],
-            "#4299BB",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                ["restaurant", "fast_food", "cafe", "bar"]
-              ]
-            ],
-            "#F19B6E",
-            [
-              "in",
-              ["get", "kind"],
-              [
-                "literal",
-                ["attraction", "museum", "theatre", "artwork"]
-              ]
-            ],
-            "#EF56BA",
-            "#1f1f1f"
-          ],
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#242734",
+          "text-halo-color": "rgba(255,255,255,0.85)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "places_subplace",
@@ -5662,7 +5576,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             "case",
             ["has", "sort_key"],
             ["get", "sort_key"],
-            ["get", "min_zoom"]
+            ["get", "min_zoom"],
           ],
           "text-field": [
             "case",
@@ -5671,24 +5585,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -5699,16 +5613,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -5719,20 +5633,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -5740,20 +5654,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -5761,38 +5675,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -5803,7 +5717,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -5811,24 +5725,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -5836,18 +5750,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -5858,7 +5772,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -5866,7 +5780,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -5874,18 +5788,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -5893,7 +5807,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -5901,7 +5815,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -5909,20 +5823,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -5930,7 +5844,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -5941,7 +5855,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -5949,24 +5863,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -5974,24 +5888,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -5999,24 +5913,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -6024,7 +5938,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -6032,7 +5946,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -6040,24 +5954,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -6065,22 +5979,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -6088,7 +6002,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -6096,7 +6010,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -6104,24 +6018,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -6129,18 +6043,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -6148,7 +6062,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -6156,7 +6070,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -6164,24 +6078,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -6189,21 +6103,21 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-font": ["Noto Sans Regular"],
           "text-max-width": 7,
@@ -6219,7 +6133,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             18,
             15,
-            20
+            20,
           ],
           "text-size": [
             "interpolate",
@@ -6230,15 +6144,15 @@ Map<String, dynamic> protomapsDarkTheme() {
             14,
             14,
             18,
-            24
+            24,
           ],
-          "text-transform": "uppercase"
+          "text-transform": "uppercase",
         },
         "paint": {
-          "text-color": "#525252",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#2e3248",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "places_region",
@@ -6254,7 +6168,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             [
               "coalesce",
               ["get", "ref:en"],
-              ["get", "ref"]
+              ["get", "ref"],
             ],
             6,
             [
@@ -6264,24 +6178,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "any",
                   ["has", "name"],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "!",
                   [
                     "any",
                     ["has", "name2"],
-                    ["has", "pgf:name2"]
-                  ]
+                    ["has", "pgf:name2"],
+                  ],
                 ],
                 [
                   "!",
                   [
                     "any",
                     ["has", "name3"],
-                    ["has", "pgf:name3"]
-                  ]
-                ]
+                    ["has", "pgf:name3"],
+                  ],
+                ],
               ],
               [
                 "case",
@@ -6292,16 +6206,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "any",
                     [
                       "is-supported-script",
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
-                    ["has", "pgf:name"]
+                    ["has", "pgf:name"],
                   ],
                   [
                     "format",
                     [
                       "coalesce",
                       ["get", "name:en"],
-                      ["get", "name:en"]
+                      ["get", "name:en"],
                     ],
                     {},
                     "\n",
@@ -6312,20 +6226,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                         "all",
                         [
                           "!",
-                          ["has", "name:en"]
+                          ["has", "name:en"],
                         ],
                         ["has", "name:en"],
                         [
                           "!",
-                          ["has", "script"]
-                        ]
+                          ["has", "script"],
+                        ],
                       ],
                       "",
                       [
                         "coalesce",
                         ["get", "pgf:name"],
-                        ["get", "name"]
-                      ]
+                        ["get", "name"],
+                      ],
                     ],
                     {
                       "text-font": [
@@ -6333,20 +6247,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
                   ],
-                  ["get", "name:en"]
+                  ["get", "name:en"],
                 ],
                 [
                   "format",
@@ -6354,38 +6268,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  {}
-                ]
+                  {},
+                ],
               ],
               [
                 "all",
                 [
                   "any",
                   ["has", "name"],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
+                  ["has", "pgf:name2"],
                 ],
                 [
                   "!",
                   [
                     "any",
                     ["has", "name3"],
-                    ["has", "pgf:name3"]
-                  ]
-                ]
+                    ["has", "pgf:name3"],
+                  ],
+                ],
               ],
               [
                 "case",
                 [
                   "all",
                   ["has", "script"],
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -6396,7 +6310,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -6404,24 +6318,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -6429,18 +6343,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "case",
@@ -6451,7 +6365,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "coalesce",
                       ["get", "name:en"],
                       ["get", "pgf:name"],
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
                     {},
                     "\n",
@@ -6459,7 +6373,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "coalesce",
                       ["get", "pgf:name2"],
-                      ["get", "name2"]
+                      ["get", "name2"],
                     ],
                     {
                       "text-font": [
@@ -6467,18 +6381,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script2"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
                   ],
                   [
                     "format",
@@ -6486,7 +6400,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "coalesce",
                       ["get", "name:en"],
                       ["get", "pgf:name2"],
-                      ["get", "name2"]
+                      ["get", "name2"],
                     ],
                     {},
                     "\n",
@@ -6494,7 +6408,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
                     {
                       "text-font": [
@@ -6502,20 +6416,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
-                  ]
-                ]
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
+                  ],
+                ],
               ],
               [
                 "case",
@@ -6523,7 +6437,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "all",
                   ["has", "script"],
                   ["has", "script2"],
-                  ["has", "script3"]
+                  ["has", "script3"],
                 ],
                 [
                   "format",
@@ -6534,7 +6448,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -6542,24 +6456,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -6567,24 +6481,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -6592,24 +6506,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "case",
                   [
                     "!",
-                    ["has", "script"]
+                    ["has", "script"],
                   ],
                   [
                     "format",
@@ -6617,7 +6531,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "coalesce",
                       ["get", "name:en"],
                       ["get", "pgf:name"],
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
                     {},
                     "\n",
@@ -6625,7 +6539,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "coalesce",
                       ["get", "pgf:name2"],
-                      ["get", "name2"]
+                      ["get", "name2"],
                     ],
                     {
                       "text-font": [
@@ -6633,24 +6547,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script2"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
                     },
                     "\n",
                     {},
                     [
                       "coalesce",
                       ["get", "pgf:name3"],
-                      ["get", "name3"]
+                      ["get", "name3"],
                     ],
                     {
                       "text-font": [
@@ -6658,22 +6572,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script3"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
                   ],
                   [
                     "!",
-                    ["has", "script2"]
+                    ["has", "script2"],
                   ],
                   [
                     "format",
@@ -6681,7 +6595,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "coalesce",
                       ["get", "name:en"],
                       ["get", "pgf:name2"],
-                      ["get", "name2"]
+                      ["get", "name2"],
                     ],
                     {},
                     "\n",
@@ -6689,7 +6603,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
                     {
                       "text-font": [
@@ -6697,24 +6611,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
                     },
                     "\n",
                     {},
                     [
                       "coalesce",
                       ["get", "pgf:name3"],
-                      ["get", "name3"]
+                      ["get", "name3"],
                     ],
                     {
                       "text-font": [
@@ -6722,18 +6636,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script3"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
                   ],
                   [
                     "format",
@@ -6741,7 +6655,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "coalesce",
                       ["get", "name:en"],
                       ["get", "pgf:name3"],
-                      ["get", "name3"]
+                      ["get", "name3"],
                     ],
                     {},
                     "\n",
@@ -6749,7 +6663,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
+                      ["get", "name"],
                     ],
                     {
                       "text-font": [
@@ -6757,24 +6671,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
                     },
                     "\n",
                     {},
                     [
                       "coalesce",
                       ["get", "pgf:name2"],
-                      ["get", "name2"]
+                      ["get", "name2"],
                     ],
                     {
                       "text-font": [
@@ -6782,22 +6696,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                         [
                           "==",
                           ["get", "script2"],
-                          "Devanagari"
+                          "Devanagari",
                         ],
                         [
                           "literal",
-                          ["Noto Sans Devanagari Regular v1"]
+                          ["Noto Sans Devanagari Regular v1"],
                         ],
                         [
                           "literal",
-                          ["Noto Sans Regular"]
-                        ]
-                      ]
-                    }
-                  ]
-                ]
-              ]
-            ]
+                          ["Noto Sans Regular"],
+                        ],
+                      ],
+                    },
+                  ],
+                ],
+              ],
+            ],
           ],
           "text-font": ["Noto Sans Regular"],
           "text-size": [
@@ -6807,17 +6721,17 @@ Map<String, dynamic> protomapsDarkTheme() {
             3,
             11,
             7,
-            16
+            16,
           ],
           "text-radial-offset": 0.2,
           "text-anchor": "center",
-          "text-transform": "uppercase"
+          "text-transform": "uppercase",
         },
         "paint": {
-          "text-color": "#3d3d3d",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
+          "text-color": "#2e3248",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "places_locality",
@@ -6834,13 +6748,13 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "==",
                 ["get", "capital"],
-                "yes"
+                "yes",
               ],
               "capital",
-              "townspot"
+              "townspot",
             ],
             8,
-            ""
+            "",
           ],
           "icon-size": 0.7,
           "text-field": [
@@ -6850,24 +6764,24 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name2"],
-                  ["has", "pgf:name2"]
-                ]
+                  ["has", "pgf:name2"],
+                ],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
@@ -6878,16 +6792,16 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "any",
                   [
                     "is-supported-script",
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
-                  ["has", "pgf:name"]
+                  ["has", "pgf:name"],
                 ],
                 [
                   "format",
                   [
                     "coalesce",
                     ["get", "name:en"],
-                    ["get", "name:en"]
+                    ["get", "name:en"],
                   ],
                   {},
                   "\n",
@@ -6898,20 +6812,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       "all",
                       [
                         "!",
-                        ["has", "name:en"]
+                        ["has", "name:en"],
                       ],
                       ["has", "name:en"],
                       [
                         "!",
-                        ["has", "script"]
-                      ]
+                        ["has", "script"],
+                      ],
                     ],
                     "",
                     [
                       "coalesce",
                       ["get", "pgf:name"],
-                      ["get", "name"]
-                    ]
+                      ["get", "name"],
+                    ],
                   ],
                   {
                     "text-font": [
@@ -6919,20 +6833,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
-                ["get", "name:en"]
+                ["get", "name:en"],
               ],
               [
                 "format",
@@ -6940,38 +6854,38 @@ Map<String, dynamic> protomapsDarkTheme() {
                   "coalesce",
                   ["get", "name:en"],
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
-                {}
-              ]
+                {},
+              ],
             ],
             [
               "all",
               [
                 "any",
                 ["has", "name"],
-                ["has", "pgf:name"]
+                ["has", "pgf:name"],
               ],
               [
                 "any",
                 ["has", "name2"],
-                ["has", "pgf:name2"]
+                ["has", "pgf:name2"],
               ],
               [
                 "!",
                 [
                   "any",
                   ["has", "name3"],
-                  ["has", "pgf:name3"]
-                ]
-              ]
+                  ["has", "pgf:name3"],
+                ],
+              ],
             ],
             [
               "case",
               [
                 "all",
                 ["has", "script"],
-                ["has", "script2"]
+                ["has", "script2"],
               ],
               [
                 "format",
@@ -6982,7 +6896,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -6990,24 +6904,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -7015,18 +6929,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
@@ -7037,7 +6951,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -7045,7 +6959,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -7053,18 +6967,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -7072,7 +6986,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -7080,7 +6994,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -7088,20 +7002,20 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
             ],
             [
               "case",
@@ -7109,7 +7023,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 "all",
                 ["has", "script"],
                 ["has", "script2"],
-                ["has", "script3"]
+                ["has", "script3"],
               ],
               [
                 "format",
@@ -7120,7 +7034,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                 [
                   "coalesce",
                   ["get", "pgf:name"],
-                  ["get", "name"]
+                  ["get", "name"],
                 ],
                 {
                   "text-font": [
@@ -7128,24 +7042,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name2"],
-                  ["get", "name2"]
+                  ["get", "name2"],
                 ],
                 {
                   "text-font": [
@@ -7153,24 +7067,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script2"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
                 },
                 "\n",
                 {},
                 [
                   "coalesce",
                   ["get", "pgf:name3"],
-                  ["get", "name3"]
+                  ["get", "name3"],
                 ],
                 {
                   "text-font": [
@@ -7178,24 +7092,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                     [
                       "==",
                       ["get", "script3"],
-                      "Devanagari"
+                      "Devanagari",
                     ],
                     [
                       "literal",
-                      ["Noto Sans Devanagari Regular v1"]
+                      ["Noto Sans Devanagari Regular v1"],
                     ],
                     [
                       "literal",
-                      ["Noto Sans Regular"]
-                    ]
-                  ]
-                }
+                      ["Noto Sans Regular"],
+                    ],
+                  ],
+                },
               ],
               [
                 "case",
                 [
                   "!",
-                  ["has", "script"]
+                  ["has", "script"],
                 ],
                 [
                   "format",
@@ -7203,7 +7117,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {},
                   "\n",
@@ -7211,7 +7125,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -7219,24 +7133,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -7244,22 +7158,22 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "!",
-                  ["has", "script2"]
+                  ["has", "script2"],
                 ],
                 [
                   "format",
@@ -7267,7 +7181,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {},
                   "\n",
@@ -7275,7 +7189,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -7283,24 +7197,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {
                     "text-font": [
@@ -7308,18 +7222,18 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script3"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
                 ],
                 [
                   "format",
@@ -7327,7 +7241,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                     "coalesce",
                     ["get", "name:en"],
                     ["get", "pgf:name3"],
-                    ["get", "name3"]
+                    ["get", "name3"],
                   ],
                   {},
                   "\n",
@@ -7335,7 +7249,7 @@ Map<String, dynamic> protomapsDarkTheme() {
                   [
                     "coalesce",
                     ["get", "pgf:name"],
-                    ["get", "name"]
+                    ["get", "name"],
                   ],
                   {
                     "text-font": [
@@ -7343,24 +7257,24 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
                   },
                   "\n",
                   {},
                   [
                     "coalesce",
                     ["get", "pgf:name2"],
-                    ["get", "name2"]
+                    ["get", "name2"],
                   ],
                   {
                     "text-font": [
@@ -7368,43 +7282,43 @@ Map<String, dynamic> protomapsDarkTheme() {
                       [
                         "==",
                         ["get", "script2"],
-                        "Devanagari"
+                        "Devanagari",
                       ],
                       [
                         "literal",
-                        ["Noto Sans Devanagari Regular v1"]
+                        ["Noto Sans Devanagari Regular v1"],
                       ],
                       [
                         "literal",
-                        ["Noto Sans Regular"]
-                      ]
-                    ]
-                  }
-                ]
-              ]
-            ]
+                        ["Noto Sans Regular"],
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            ],
           ],
           "text-font": [
             "case",
             [
               "<=",
               ["get", "min_zoom"],
-              5
+              5,
             ],
             [
               "literal",
-              ["Noto Sans Medium"]
+              ["Noto Sans Medium"],
             ],
             [
               "literal",
-              ["Noto Sans Regular"]
-            ]
+              ["Noto Sans Regular"],
+            ],
           ],
           "symbol-sort-key": [
             "case",
             ["has", "sort_key"],
             ["get", "sort_key"],
-            ["get", "min_zoom"]
+            ["get", "min_zoom"],
           ],
           "text-padding": [
             "interpolate",
@@ -7415,7 +7329,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             8,
             7,
             12,
-            11
+            11,
           ],
           "text-size": [
             "interpolate",
@@ -7427,16 +7341,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                13
+                13,
               ],
               8,
               [
                 ">=",
                 ["get", "population_rank"],
-                13
+                13,
               ],
               13,
-              0
+              0,
             ],
             4,
             [
@@ -7444,16 +7358,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                13
+                13,
               ],
               10,
               [
                 ">=",
                 ["get", "population_rank"],
-                13
+                13,
               ],
               15,
-              0
+              0,
             ],
             6,
             [
@@ -7461,16 +7375,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                12
+                12,
               ],
               11,
               [
                 ">=",
                 ["get", "population_rank"],
-                12
+                12,
               ],
               17,
-              0
+              0,
             ],
             8,
             [
@@ -7478,16 +7392,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                11
+                11,
               ],
               11,
               [
                 ">=",
                 ["get", "population_rank"],
-                11
+                11,
               ],
               18,
-              0
+              0,
             ],
             10,
             [
@@ -7495,16 +7409,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                9
+                9,
               ],
               12,
               [
                 ">=",
                 ["get", "population_rank"],
-                9
+                9,
               ],
               20,
-              0
+              0,
             ],
             15,
             [
@@ -7512,17 +7426,17 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                8
+                8,
               ],
               12,
               [
                 ">=",
                 ["get", "population_rank"],
-                8
+                8,
               ],
               22,
-              0
-            ]
+              0,
+            ],
           ],
           "icon-padding": [
             "interpolate",
@@ -7537,7 +7451,7 @@ Map<String, dynamic> protomapsDarkTheme() {
             12,
             6,
             22,
-            2
+            2,
           ],
           "text-justify": "auto",
           "text-variable-anchor": [
@@ -7545,21 +7459,21 @@ Map<String, dynamic> protomapsDarkTheme() {
             ["zoom"],
             [
               "literal",
-              ["bottom", "left", "right", "top"]
+              ["bottom", "left", "right", "top"],
             ],
             8,
             [
               "literal",
-              ["center"]
-            ]
+              ["center"],
+            ],
           ],
-          "text-radial-offset": 0.3
+          "text-radial-offset": 0.3,
         },
         "paint": {
-          "text-color": "#7a7a7a",
-          "text-halo-color": "#212121",
-          "text-halo-width": 1
-        }
+          "text-color": "#242734",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
       },
       {
         "id": "places_country",
@@ -7572,16 +7486,16 @@ Map<String, dynamic> protomapsDarkTheme() {
             "case",
             ["has", "sort_key"],
             ["get", "sort_key"],
-            ["get", "min_zoom"]
+            ["get", "min_zoom"],
           ],
           "text-field": [
             "format",
             [
               "coalesce",
               ["get", "name:en"],
-              ["get", "name:en"]
+              ["get", "name:en"],
             ],
-            {}
+            {},
           ],
           "text-font": ["Noto Sans Medium"],
           "text-size": [
@@ -7594,16 +7508,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                10
+                10,
               ],
               8,
               [
                 ">=",
                 ["get", "population_rank"],
-                10
+                10,
               ],
               12,
-              0
+              0,
             ],
             6,
             [
@@ -7611,16 +7525,16 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                8
+                8,
               ],
               10,
               [
                 ">=",
                 ["get", "population_rank"],
-                8
+                8,
               ],
               18,
-              0
+              0,
             ],
             8,
             [
@@ -7628,17 +7542,17 @@ Map<String, dynamic> protomapsDarkTheme() {
               [
                 "<",
                 ["get", "population_rank"],
-                7
+                7,
               ],
               11,
               [
                 ">=",
                 ["get", "population_rank"],
-                7
+                7,
               ],
               20,
-              0
-            ]
+              0,
+            ],
           ],
           "icon-padding": [
             "interpolate",
@@ -7653,19 +7567,19 @@ Map<String, dynamic> protomapsDarkTheme() {
             17,
             2,
             22,
-            2
+            2,
           ],
-          "text-transform": "uppercase"
+          "text-transform": "uppercase",
         },
         "paint": {
-          "text-color": "#5c5c5c",
-          "text-halo-color": "#1f1f1f",
-          "text-halo-width": 1
-        }
-      }
+          "text-color": "#1a1c28",
+          "text-halo-color": "rgba(255, 255, 255, 0.9)",
+          "text-halo-width": 1,
+        },
+      },
     ],
-    "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/dark",
+    "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/light",
     "glyphs":
-        "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf"
+        "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
   };
 }

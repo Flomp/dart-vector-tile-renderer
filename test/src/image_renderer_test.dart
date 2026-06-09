@@ -21,18 +21,8 @@ void main() {
     expect(stat.size, isNonZero);
   }
 
-  test('renders a vector tile', () async {
-    final theme = ProvidedThemes.lightTheme();
-    final tile =
-        await readTestTile(ProvidedThemes.lightTheme(logger: testLogger));
-    await assertImageWith(tile, theme, 'openmaptiles', zoom: 6);
-    await assertImageWith(tile, theme, 'openmaptiles', zoom: 13);
-    await assertImageWith(tile, theme, 'openmaptiles', zoom: 15);
-    await assertImageWith(tile, theme, 'openmaptiles', zoom: 18);
-  });
-
   test('renders a pmtile vector tile light theme', () async {
-    final theme = ProvidedThemes.protomapsLight();
+    final theme = ProvidedThemes.wandererLight(logger: const Logger.console());
     final tile = await readTestTile(theme, filename: 'sample_tile.mvt');
     await assertImageWith(tile, theme, 'protomaps', zoom: 6);
     await assertImageWith(tile, theme, 'protomaps', zoom: 13);
@@ -41,7 +31,7 @@ void main() {
   });
 
   test('renders a pmtile vector tile dark theme', () async {
-    final theme = ProvidedThemes.protomapsDark();
+    final theme = ProvidedThemes.wandererDark();
     final tile = await readTestTile(theme, filename: 'sample_tile.mvt');
     await assertImageWith(tile, theme, 'protomaps', zoom: 6);
     await assertImageWith(tile, theme, 'protomaps', zoom: 13);
