@@ -8,7 +8,7 @@ void main() {
   test('matches features with a selector', () async {
     final selector = SelectorFactory(testLogger).create(_minorRoadThemeLayer);
     final tile =
-        await readTestTile(ProvidedThemes.lightTheme(logger: testLogger));
+        await readTestTile(ProvidedThemes.wandererLight(logger: testLogger));
     final transportationLayer =
         tile.layers.where((layer) => layer.name == 'transportation').first;
     expect(selector.layerSelector.select(tile.layers, 1).toList(),

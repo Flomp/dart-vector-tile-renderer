@@ -19,6 +19,8 @@ export 'src/services/text_rendering_service.dart';
 export 'src/symbols/symbols.dart';
 export 'src/symbols/text_painter.dart';
 export 'src/themes/provided_themes.dart';
+export 'src/themes/wanderer/wanderer_light_theme.dart';
+export 'src/themes/wanderer/wanderer_dark_theme.dart';
 export 'src/themes/sprite.dart';
 export 'src/themes/sprite_reader.dart';
 export 'src/themes/theme.dart';
