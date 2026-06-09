@@ -49,3 +49,24 @@ class UnaryMathExpression extends Expression {
   @override
   bool get isConstant => _operand.isConstant;
 }
+
+class LengthExpression extends Expression<int> {
+  final Expression _operand;
+
+  LengthExpression(this._operand)
+      : super('length(${_operand.cacheKey})', _operand.properties());
+
+  @override
+  int? evaluate(EvaluationContext context) {
+    final value = _operand.evaluate(context);
+    if (value is String) {
+      return value.length;
+    } else if (value is List) {
+      return value.length;
+    }
+    return null;
+  }
+
+  @override
+  bool get isConstant => _operand.isConstant;
+}

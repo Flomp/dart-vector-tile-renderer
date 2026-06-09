@@ -58,6 +58,7 @@ class ExpressionParser {
     _register(ConcatExpressionParser(this));
     _register(FormatExpressionParser(this));
     _register(StringExpressionParser(this));
+    _register(LengthExpressionParser(this));
     _register(NaryMathExpressionParser(this, '*', (a, b) => a * b));
     _register(NaryMathExpressionParser(this, '/', (a, b) => a / b));
     _register(NaryMathExpressionParser(this, '+', (a, b) => a + b));

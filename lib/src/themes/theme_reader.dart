@@ -228,8 +228,10 @@ class ThemeReader {
   }
 
   TextLayout? _toTextLayout(layout) {
+    final rawTextField = layout?['text-field'];
+    if (rawTextField == null) return null;
     final textFunction = expressionParser
-        .parseOptional(layout?['text-field'])
+        .parseOptional(rawTextField)
         ?.asOptionalStringExpression();
     if (textFunction == null) {
       return null;
